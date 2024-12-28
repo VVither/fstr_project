@@ -11,3 +11,8 @@ class SubmitDataView(APIView):
             return Response({"status": status.HTTP_201_CREATED, "mesage": "Данные успешно сохранены"}, status=status.HTTP_201_CREATED)
         else:
             return Response({"status": status.HTTP_400_BAD_REQUEST, "mesage": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request, pk=None):
+        if pk:
+            try:
+                
