@@ -30,4 +30,38 @@ class SubmitDataView(APIView):
                 serializer = PerevalSerializer(perevals, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             else:
-                return Response({'state': 0, 'message': 'Не передан Email'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'state': 0, 'message': 'Не передан Email'}, status=status.HTTP_400_BAD_REQUEST) 
+                        
+    def patch(self, request, pk):
+        try:
+            pereval = get_object_or_404(pereval_added, pk=pk)
+            if pereval.status != 'new':
+                return Response({"state": 0, "message": "Перевал можно редактировать только со статусом 'new'"}, status=status.HTTP_400_BAD_REQUEST)
+            
+            editable_fields = [
+                'beautyTitle',
+                'title',
+                'other_titles',
+                'connect',
+                'coords_id',
+                'winter_level',
+                'summer_level',
+                'autumn_level',
+                'spring_level',
+                'images'
+            ]
+            data = request.data.copy()
+
+            for field in list(data.keys()):
+                if field not in editable_fields:
+                    del data[field]
+
+            serializer = PerevalSerializer(pereval, data=data, pereval=True)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response({"state": 1, "message": "Данные успешно изменены"}, status=status.HTTP_200_OK)
+            else:
+                return Response({"state": 0, "message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"state": 0, "message": f"Перевал с ID {pk} не найден"}, status=status.HTTP_404_NOT_FOUND)
