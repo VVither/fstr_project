@@ -16,6 +16,15 @@ FSTR_DB_LOGIN= логин пользователя базы данных(так 
 
 FSTR_DB_PASS=пароль от пользователя
 
+Данное REST API использует библиотеки django и django-rest-framework
+
+перед началом работы убедитесь что у вас установлены данные библиотеки
+
+**pip list**
+
+В случае если они отсутствуют 
+
+**pip install django, djangorestframework***
 ---
 
 Для запуска необходимо находясь в директории fstr_project/fstr в консоли прописать **python manage.py runserver**
