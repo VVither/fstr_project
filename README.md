@@ -24,7 +24,8 @@ FSTR_DB_PASS=пароль от пользователя
 
 В случае если они отсутствуют 
 
-**pip install django, djangorestframework***
+**pip install django, djangorestframework**
+
 ---
 
 Для запуска необходимо находясь в директории fstr_project/fstr в консоли прописать **python manage.py runserver**
