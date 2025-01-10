@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'pereval'
+    'pereval',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fstr.wsgi.application'
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'FSTR REST API',
+    'DESCRIPTION': 'Данное API необходимо для создания записи о новом переволе',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
