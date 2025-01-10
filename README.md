@@ -16,7 +16,7 @@ FSTR_DB_LOGIN= логин пользователя базы данных(так 
 
 FSTR_DB_PASS=пароль от пользователя
 
-Данное REST API использует библиотеки django и django-rest-framework
+Данное REST API использует библиотеки django, django-rest-framework и drf-spectacular
 
 перед началом работы убедитесь что у вас установлены данные библиотеки
 
@@ -24,8 +24,12 @@ FSTR_DB_PASS=пароль от пользователя
 
 В случае если они отсутствуют 
 
-**pip install django, djangorestframework**
+**pip install django, djangorestframework, drf-spectacular**
 
 ---
 
 Для запуска необходимо находясь в директории fstr_project/fstr в консоли прописать **python manage.py runserver**
+
+---
+
+Более подробная документация доступна после запуска сервера по адресу **http://127.0.0.1:8000/schema/swagger/**
